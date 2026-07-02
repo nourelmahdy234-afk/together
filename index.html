@@ -2,22 +2,101 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>احنا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احنا 🖤</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arafat+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000000; color: #ffffff; text-align: center; font-family: 'Cairo', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; }
-        .title { font-size: 50px; font-weight: bold; margin-bottom: 20px; }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arafat Ruqaa', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .heart {
+            font-size: 80px;
+            color: #000000;
+            -webkit-text-stroke: 2px #ffffff;
+            display: inline-block;
+            animation: pulse 1.2s infinite ease-in-out;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); }
+            60% { transform: scale(1); }
+            80% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .title {
+            font-size: 55px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            color: #aaaaaa;
+            margin-bottom: 30px;
+            animation: fadeIn 2s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body onclick="playMusic()">
-    <div class="title">احنا</div>
-    <p>اضغط في أي مكان لتشغيل الأغنية</p>
-    <audio id="myAudio" src="music.mp3"></audio>
+
+    <div class="container">
+        <div class="heart">🖤</div>
+        <div class="title">احنا</div>
+        <div class="subtitle">اضغطي في أي مكان لتشغيل الموسيقى ✨</div>
+    </div>
+
+    <!-- ملف الصوت المربوط -->
+    <audio id="bgMusic" src="music.mp3" loop></audio>
 
     <script>
         function playMusic() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
+            var audio = document.getElementById("bgMusic");
+            audio.play().catch(function(error) {
+                console.log("تعذر تشغيل الصوت تلقائياً:", error);
+            });
+            
+            // إخفاء نص التوجيه بعد تشغيل الأغنية بنجاح
+            var subtitle = document.querySelector('.subtitle');
+            if(subtitle) {
+                subtitle.style.visibility = 'hidden';
+            }
         }
     </script>
+
 </body>
 </html>
