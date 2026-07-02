@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احنا ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Aref Ruqaa', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            user-select: none;
+            cursor: pointer;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .heart {
+            font-size: 80px;
+            color: #000000;
+            -webkit-text-stroke: 2px #ffffff;
+            display: inline-block;
+            animation: pulse 1.2s infinite ease-in-out;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); }
+            60% { transform: scale(1); }
+            80% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .title { 
+            font-size: 55px; 
+            font-weight: 700; 
+            margin-bottom: 5px; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .names { 
+            font-size: 32px; 
+            color: #aaaaaa; 
+            margin-bottom: 25px; 
+        }
+        .message-area {
+            width: 100%;
+            height: 320px; 
+            background-color: #111111;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            color: #ffffff;
+            padding: 18px;
+            font-size: 16px;
+            line-height: 1.8; 
+            font-family: 'Cairo', sans-serif;
+            font-weight: 400;
+            resize: none;
+            box-sizing: border-box;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .message-area:focus {
+            border-color: #666666;
+        }
+        .hint {
+            margin-top: 20px;
+            font-size: 15px;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            background: #222222;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #444444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">&#9829;</div>
+        <div class="title">احنا</div>
+        <div class="names">نونو × حمودي</div>
+        <textarea class="message-area" readonly>من لما بدانا نقول "احنا" كل حاجه بقت كويسه عارفه انك ممكن دلوقتي تبقى زعلان او متضايق مني بس والله لو ضايقتك قبل كده ف انا بجد مش قصدي عمتا بحب كل فترة اوضحلك اني بحبك حتى لو بحاجات صغيره زي كده ممكن متبقاش فارقه معاك بس انا بفرح لو قلتلي انها عجبتك حتى بحبك جدا مش متخيله ف يوم اني اصحى الاقي كل حاجه بيننا انتهت هو اه عارفين بعض من فترة صغيره بس والله احلى فترة عدت عليا بوجودك معايا فيها بحبك جدا او كلمة بحبك دي قليله على اللي جوايا من ناحيتك دا انا بدعي ربنا فالصلاه انك متبعدش عني انت بالنسبالي بقيت الكل انت حياتي بجد و انا فعلا كل يوم بتحسن عن اليوم اللي قبلو بوجودك جمبي و معايا اول مره اعرف اني انسانه كويسه شوية علشان اكيد انت مش هتبقى ف حياة حد وحش انت نعمة من ربنا انعم عليا بيها من اول يوم بصينا لبعض فيه و انا عارفه انك هتوحشني و مش شوية كلام اللي هيعرفو يبينو حبي ليك بجد دي حاجه قليله اوي انا اول مره احب بجد او اتعلق بحد كده ف متبقاش زيهم انا بهرب من قرفهم و اجي اشتكيلك انت ..اول مره احب بالطريقه دي بجد انا فعلا بحبك مش شوية كلام وخلاص و كنت بزعل جدا لما تشكك ف حاجه زي دي معنديش كلام اقولو بصراحه علشان مبعرفش ابين اللي حاسه بيه بس اللي اعرفو بجد اني مش هلاقي حد زيك و مبطبلش والله انت فعلا انسان مميز عنهم جدا و عمتا الحمدلله ان فيه فحياتي حد زيك ❣💕</textarea>
+        <div class="hint" id="play-hint">اضغطي هنا لتشغيل الأغنية 🎵</div>
+    </div>
+    <audio id="bg-music" loop crossorigin="anonymous">
+        <source src="https://archive.org/download/amrdiab_202005/Ma%27ak%20Alby.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const music = document.getElementById('bg-music');
+        const hint = document.getElementById('play-hint');
+        document.body.addEventListener('click', function(e) {
+            if (e.target.tagName === 'TEXTAREA') return; 
+            if (music.paused) {
+                music.play().then(() => {
+                    hint.innerText = "الأغنية تعمل الآن ❤️";
+                }).catch(err => {
+                    console.log("خطأ في التحميل: ", err);
+                    hint.innerText = "جاري تحميل الأغنية من الإنترنت.. اضغطي مجدداً 🎵";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
